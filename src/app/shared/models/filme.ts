@@ -1,4 +1,4 @@
-export interface Filme {
+export interface Curso {
   id?: number;
   titulo: string;
   urlFoto?: string;

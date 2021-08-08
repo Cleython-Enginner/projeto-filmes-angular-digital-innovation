@@ -1,52 +1,52 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FilmesModule } from './filmes/filmes.module';
-import { CadastroFilmesComponent } from './filmes/cadastro-filmes/cadastro-filmes.component';
-import { ListagemFilmesComponent } from './filmes/listagem-filmes/listagem-filmes.component';
-import { VisualizarFilmesComponent } from './filmes/visualizar-filmes/visualizar-filmes.component';
+import { CursosModule } from './cursos/cursos.module';
+import { CadastroCursosComponent } from './cursos/cadastro-cursos/cadastro-cursos.component';
+import { ListagemCursosComponent } from './cursos/listagem-cursos/listagem-cursos.component';
+import { VisualizarCursosComponent } from './cursos/visualizar-cursos/visualizar-fcursos.component';
 
 const routes: Routes = [
 
   {
       path: '',
-      redirectTo: 'filmes',
+      redirectTo: 'cursos',
       pathMatch: 'full'
   },
   {
-    path: 'filmes',
+    path: 'cursos',
     children: [
       {
         path: '',
-        component: ListagemFilmesComponent
+        component: ListagemCursosomponent
       },
       {
         path: 'cadastro',
         children: [
           {
             path: '',
-            component: CadastroFilmesComponent
+            component: CadastroCursosComponent
           },
           {
             path: ':id',
-            component: CadastroFilmesComponent
+            component: CadastroCursosComponent
           }
         ]
       },
       {
         path: ':id',
-        component: VisualizarFilmesComponent,
+        component: VisualizarCursosComponent,
         pathMatch: 'full'
       }
     ]
   },
-  { path: '**', redirectTo: 'filmes' },
+  { path: '**', redirectTo: 'cursos' },
 
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    FilmesModule
+    CursosModule
   ],
   exports: [RouterModule]
 })

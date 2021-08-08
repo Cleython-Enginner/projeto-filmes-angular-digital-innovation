@@ -2,27 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
-import { FilmesService } from 'src/app/core/filmes.service';
-import { Filme } from 'src/app/shared/models/filme';
+import { CursosService } from 'src/app/core/cursos.service';
+import { Curso } from 'src/app/shared/models/curso';
 import { ConfigPrams } from 'src/app/shared/models/config-prams';
 
 @Component({
-  selector: 'dio-listagem-filmes',
-  templateUrl: './listagem-filmes.component.html',
-  styleUrls: ['./listagem-filmes.component.scss']
+  selector: 'dio-listagem-cursos',
+  templateUrl: './listagem-cursos.component.html',
+  styleUrls: ['./listagem-cursos.component.scss']
 })
-export class ListagemFilmesComponent implements OnInit {
+export class ListagemCursosComponent implements OnInit {
   readonly semFoto = 'https://www.termoparts.com.br/wp-content/uploads/2017/10/no-image.jpg';
 
   config: ConfigPrams = {
     pagina: 0,
     limite: 4
   };
-  filmes: Filme[] = [];
+  cursos: Curso[] = [];
   filtrosListagem: FormGroup;
   generos: Array<string>;
 
-  constructor(private filmesService: FilmesService,
+  constructor(private cursosService: CursosService,
               private fb: FormBuilder,
               private router: Router) { }
 
@@ -46,26 +46,26 @@ export class ListagemFilmesComponent implements OnInit {
 
     this.generos = ['Front-end', 'Back-end', 'Mobile', 'Frameworks', 'Ciências de Dados', 'Engenharia de Software', 'Aquitetura de Software', 'Cybersecurity'];
 
-    this.listarFilmes();
+    this.listarCursos();
   }
 
   onScroll(): void {
-    this.listarFilmes();
+    this.listarCursos();
   }
 
   abrir(id: number): void {
-    this.router.navigateByUrl('/filmes/' + id);
+    this.router.navigateByUrl('/cursos/' + id);
   }
 
-  private listarFilmes(): void {
+  private listarCursos(): void {
     this.config.pagina++;
-    this.filmesService.listar(this.config)
-      .subscribe((filmes: Filme[]) => this.filmes.push(...filmes));
+    this.cursosService.listar(this.config)
+      .subscribe((cursos: Curso[]) => this.cursos.push(...cursos));
   }
 
   private resetarConsulta(): void {
     this.config.pagina = 0;
-    this.filmes = [];
-    this.listarFilmes();
+    this.cursos = [];
+    this.listarCursos();
   }
 }

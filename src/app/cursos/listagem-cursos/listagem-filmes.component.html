@@ -25,21 +25,21 @@
 <div  class="home-content"
       infiniteScroll
       (scrolled)="onScroll()"
-      *ngIf="filmes.length; else semRegistro">
-  <mat-card class="home-card" *ngFor="let filme of filmes">
+      *ngIf="cursos.length; else semRegistro">
+  <mat-card class="home-card" *ngFor="let curso of cursos">
     <mat-card-header>
       <div mat-card-avatar></div>
-      <mat-card-title>{{filme.titulo}}</mat-card-title>
-      <mat-card-subtitle>{{filme.genero}}</mat-card-subtitle>
+      <mat-card-title>{{curso.titulo}}</mat-card-title>
+      <mat-card-subtitle>{{curso.genero}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="filme.urlFoto || semFoto" >
+    <img mat-card-image [src]="curso.urlFoto || semFoto" >
     <mat-card-content>
       <p class="quebrar-linha">
-        {{filme.descricao || 'Nenhuma descrição informada'}}
+        {{fcurso.descricao || 'Nenhuma descrição informada'}}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button color="accent" mat-raised-button (click)="abrir(filme.id)">ABRIR</button>
+      <button color="accent" mat-raised-button (click)="abrir(curso.id)">ABRIR</button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -1,0 +1,18 @@
+<mat-list *ngIf="curso; else semRegistro">
+  <mat-list-item> Título: {{curso.titulo}} </mat-list-item>
+  <mat-list-item> Data de lançamento: {{curso.dtLancamento | date: 'dd/MM/yyyy' }} </mat-list-item>
+  <mat-list-item> Gênero: {{curso.genero}} </mat-list-item>
+  <mat-list-item class="quebrar-linha"> Descrição: {{curso.descricao}} </mat-list-item>
+  <mat-list-item> Nota: <a [href]="curso.urlIMDb" target="_blank"> {{curso.nota}}</a> </mat-list-item>
+  <img mat-card-image [src]="curso.urlFoto || semFoto" >
+</mat-list>
+<mat-card>
+  <mat-card-actions>
+    <button color="accent" mat-raised-button (click)="editar()">Editar</button>
+    <button color="warn" mat-raised-button (click)="excluir()">Excluir</button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #semRegistro>
+  <h1 class="full-width main-div">Nenhum registro encontrado!</h1>
+</ng-template>

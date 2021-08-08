@@ -3,17 +3,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidarCamposService } from 'src/app/shared/components/campos/validar-campos.service';
-import { Filme } from 'src/app/shared/models/filme';
-import { FilmesService } from 'src/app/core/filmes.service';
+import { Curso } from 'src/app/shared/models/curso';
+import { CursosService } from 'src/app/core/cursos.service';
 import { AlertaComponent } from 'src/app/shared/components/alerta/alerta.component';
 import { Alerta } from 'src/app/shared/models/alerta';
 
 @Component({
-  selector: 'dio-cadastro-filmes',
-  templateUrl: './cadastro-filmes.component.html',
-  styleUrls: ['./cadastro-filmes.component.scss']
+  selector: 'dio-cadastro-cursos',
+  templateUrl: './cadastro-cursos.component.html',
+  styleUrls: ['./cadastro-cursos.component.scss']
 })
-export class CadastroFilmesComponent implements OnInit {
+export class CadastroCursosComponent implements OnInit {
 
   id: number;
   cadastro: FormGroup;
@@ -22,7 +22,7 @@ export class CadastroFilmesComponent implements OnInit {
   constructor(public validacao: ValidarCamposService,
               public dialog: MatDialog,
               private fb: FormBuilder,
-              private filmeService: FilmesService,
+              private cursoService: CursosService,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 
@@ -33,10 +33,10 @@ export class CadastroFilmesComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.filmeService.visualizar(this.id)
-        .subscribe((filme: Filme) => this.criarFormulario(filme));
+      this.cursoService.visualizar(this.id)
+        .subscribe((curso: Curso) => this.criarFormulario(curso));
     } else {
-      this.criarFormulario(this.criarFilmeEmBranco());
+      this.criarFormulario(this.criarCursoEmBranco());
     }
 
     this.generos = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção cientifica', 'Comédia', 'Aventura', 'Drama'];
@@ -49,12 +49,12 @@ export class CadastroFilmesComponent implements OnInit {
       return;
     }
 
-    const filme = this.cadastro.getRawValue() as Filme;
+    const curso = this.cadastro.getRawValue() as Curso;
     if (this.id) {
-      filme.id = this.id;
-      this.editar(filme);
+      curso.id = this.id;
+      this.editar(curso);
     } else {
-      this.salvar(filme);
+      this.salvar(curso);
     }
   }
 
@@ -62,19 +62,19 @@ export class CadastroFilmesComponent implements OnInit {
     this.cadastro.reset();
   }
 
-  private criarFormulario(filme: Filme): void {
+  private criarFormulario(curso: Curso): void {
     this.cadastro = this.fb.group({
-      titulo: [filme.titulo, [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
-      urlFoto: [filme.urlFoto, [Validators.minLength(10)]],
-      dtLancamento: [filme.dtLancamento, [Validators.required]],
-      descricao: [filme.descricao],
-      nota: [filme.nota, [Validators.required, Validators.min(0), Validators.max(10)]],
-      urlIMDb: [filme.urlIMDb, [Validators.minLength(10)]],
-      genero: [filme.genero, [Validators.required]]
+      titulo: [curso.titulo, [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
+      urlFoto: [curso.urlFoto, [Validators.minLength(10)]],
+      dtLancamento: [curso.dtLancamento, [Validators.required]],
+      descricao: [curso.descricao],
+      nota: [curso.nota, [Validators.required, Validators.min(0), Validators.max(10)]],
+      urlIMDb: [curso.urlIMDb, [Validators.minLength(10)]],
+      genero: [curso.genero, [Validators.required]]
     });
   }
 
-  private criarFilmeEmBranco(): Filme {
+  private criarCursoEmBranco(): Curso {
     return {
       id: null,
       titulo: null,
@@ -84,15 +84,15 @@ export class CadastroFilmesComponent implements OnInit {
       nota: null,
       urlImdb: null,
       genero: null
-    } as Filme;
+    } as Curso;
   }
 
-  private salvar(filme: Filme): void {
-    this.filmeService.salvar(filme).subscribe(() => {
+  private salvar(curso: Curso): void {
+    this.cursoService.salvar(curso).subscribe(() => {
       const config = {
         data: {
           btnSucesso: 'Ir para a listagem',
-          btnCancelar: 'Cadastrar um novo filme',
+          btnCancelar: 'Cadastrar um novo curso',
           corBtnCancelar: 'primary',
           possuirBtnFechar: true
         } as Alerta
@@ -100,7 +100,7 @@ export class CadastroFilmesComponent implements OnInit {
       const dialogRef = this.dialog.open(AlertaComponent, config);
       dialogRef.afterClosed().subscribe((opcao: boolean) => {
         if (opcao) {
-          this.router.navigateByUrl('filmes');
+          this.router.navigateByUrl('cursos');
         } else {
           this.reiniciarForm();
         }
@@ -119,8 +119,8 @@ export class CadastroFilmesComponent implements OnInit {
     });
   }
 
-  private editar(filme: Filme): void {
-    this.filmeService.editar(filme).subscribe(() => {
+  private editar(curso: Curso): void {
+    this.cursoService.editar(curso).subscribe(() => {
       const config = {
         data: {
           descricao: 'Seu registro foi atualizado com sucesso!',
@@ -128,7 +128,7 @@ export class CadastroFilmesComponent implements OnInit {
         } as Alerta
       };
       const dialogRef = this.dialog.open(AlertaComponent, config);
-      dialogRef.afterClosed().subscribe(() => this.router.navigateByUrl('filmes'));
+      dialogRef.afterClosed().subscribe(() => this.router.navigateByUrl('cursos'));
     },
     () => {
       const config = {

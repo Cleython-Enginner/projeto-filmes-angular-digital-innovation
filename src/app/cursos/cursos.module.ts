@@ -4,11 +4,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { CadastroFilmesComponent } from './cadastro-filmes/cadastro-filmes.component';
+import { CadastroCursosComponent } from './cadastro-cursos/cadastro-cursos.component';
 import { MaterialModule } from '../shared/material/material.module';
-import { ListagemFilmesComponent } from './listagem-filmes/listagem-filmes.component';
+import { ListagemCursosComponent } from './listagem-cursos/listagem-cursos.component';
 import { CamposModule } from '../shared/components/campos/campos.module';
-import { VisualizarFilmesComponent } from './visualizar-filmes/visualizar-filmes.component';
+import { VisualizarCursosComponent } from './visualizar-cursos/visualizar-cursos.component';
 
 @NgModule({
   imports: [
@@ -19,6 +19,6 @@ import { VisualizarFilmesComponent } from './visualizar-filmes/visualizar-filmes
     CamposModule,
     InfiniteScrollModule
   ],
-  declarations: [CadastroFilmesComponent, ListagemFilmesComponent, VisualizarFilmesComponent]
+  declarations: [CadastroCursosComponent, ListagemCursosComponent, VisualizarCursosComponent]
 })
-export class FilmesModule { }
+export class CursosModule { }
