@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CursosService } from 'src/app/core/cursos.service';
+import { Curso } from 'src/app/shared/models/curso';
 import { Alerta } from 'src/app/shared/models/alerta';
 import { AlertaComponent } from 'src/app/shared/components/alerta/alerta.component';
-import { Curso } from 'src/app/shared/models/curso';
+
 
 
 @Component({

@@ -3,8 +3,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { CursosService } from 'src/app/core/cursos.service';
+import { Curso } from 'src/app/shared/models/curso';
 import { ConfigPrams } from 'src/app/shared/models/config-prams';
-import { Cursos } from 'src/app/shared/models/curso';
+
 
 
 
@@ -20,9 +21,9 @@ export class ListagemCursosComponent implements OnInit {
     pagina: 0,
     limite: 4
   };
-  cursos: Cursos[] = [];
+  cursos: Curso[] = [];
   filtrosListagem: FormGroup;
-  generos: Array<string>;
+  areas: Array<string>;
 
   constructor(private cursosService: CursosService,
               private fb: FormBuilder,
@@ -31,7 +32,7 @@ export class ListagemCursosComponent implements OnInit {
   ngOnInit(): void {
     this.filtrosListagem = this.fb.group({
       texto: [''],
-      genero: ['']
+      area: ['']
     });
 
     this.filtrosListagem.get('texto').valueChanges
@@ -41,12 +42,12 @@ export class ListagemCursosComponent implements OnInit {
       this.resetarConsulta();
     });
 
-    this.filtrosListagem.get('genero').valueChanges.subscribe((val: string) => {
-      this.config.campo = {tipo: 'genero', valor: val};
+    this.filtrosListagem.get('area').valueChanges.subscribe((val: string) => {
+      this.config.campo = {tipo: 'area', valor: val};
       this.resetarConsulta();
     });
 
-    this.generos = ['Front-end', 'Back-end', 'Mobile', 'Frameworks', 'Ciências de Dados', 'Engenharia de Software', 'Aquitetura de Software', 'Cybersecurity'];
+    this.areas = ['Front-end', 'Back-end', 'Mobile', 'Frameworks', 'Ciências de Dados', 'Engenharia de Software', 'Aquitetura de Software', 'Cybersecurity'];
 
     this.listarCursos();
   }
@@ -62,7 +63,7 @@ export class ListagemCursosComponent implements OnInit {
   private listarCursos(): void {
     this.config.pagina++;
     this.cursosService.listar(this.config)
-      .subscribe((cursos: Cursos[]) => this.cursos.push(...cursos));
+   .subscribe((cursos: Curso []) => this.cursos.push(...cursos));
   }
 
   private resetarConsulta(): void {

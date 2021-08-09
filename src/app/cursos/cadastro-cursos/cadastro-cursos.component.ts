@@ -17,7 +17,7 @@ export class CadastroCursosComponent implements OnInit {
 
   id: number;
   cadastro: FormGroup;
-  generos: Array<string>;
+  areas: Array<string>;
 
   constructor(public validacao: ValidarCamposService,
               public dialog: MatDialog,
@@ -39,7 +39,7 @@ export class CadastroCursosComponent implements OnInit {
       this.criarFormulario(this.criarCursoEmBranco());
     }
 
-    this.generos = ['Front-end', 'Back-end', 'Mobile', 'Frameworks', 'Ciências de Dados', 'Engenharia de Software', 'Aquitetura de Software', 'Cybersecurity'];
+    this.areas = ['Front-end', 'Back-end', 'Mobile', 'Frameworks', 'Ciências de Dados', 'Engenharia de Software', 'Aquitetura de Software', 'Cybersecurity'];
 
   }
 
@@ -66,11 +66,11 @@ export class CadastroCursosComponent implements OnInit {
     this.cadastro = this.fb.group({
       titulo: [curso.titulo, [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
       urlFoto: [curso.urlFoto, [Validators.minLength(10)]],
-      dtLancamento: [curso.dtLancamento, [Validators.required]],
+      dtConclusao: [curso.dtConclusao, [Validators.required]],
       descricao: [curso.descricao],
       nota: [curso.nota, [Validators.required, Validators.min(0), Validators.max(10)]],
-      urlIMDb: [curso.urlIMDb, [Validators.minLength(10)]],
-      genero: [curso.genero, [Validators.required]]
+      urlcurso: [curso.urlcurso, [Validators.minLength(10)]],
+      area: [curso.area, [Validators.required]]
     });
   }
 
@@ -78,12 +78,12 @@ export class CadastroCursosComponent implements OnInit {
     return {
       id: null,
       titulo: null,
-      dtLancamento: null,
+      dtConclusao: null,
       urlFoto: null,
       descricao: null,
       nota: null,
-      urlImdb: null,
-      genero: null
+      urlcurso: null,
+      area: null
     } as Curso;
   }
 

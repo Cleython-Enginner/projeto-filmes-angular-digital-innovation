@@ -1,9 +1,9 @@
 <mat-list *ngIf="curso; else semRegistro">
   <mat-list-item> Título: {{curso.titulo}} </mat-list-item>
-  <mat-list-item> Data de lançamento: {{curso.dtLancamento | date: 'dd/MM/yyyy' }} </mat-list-item>
-  <mat-list-item> Gênero: {{curso.genero}} </mat-list-item>
+  <mat-list-item> Data de lançamento: {{curso.dtConclusao | date: 'dd/MM/yyyy' }} </mat-list-item>
+  <mat-list-item> Área: {{curso.area}} </mat-list-item>
   <mat-list-item class="quebrar-linha"> Descrição: {{curso.descricao}} </mat-list-item>
-  <mat-list-item> Nota: <a [href]="curso.urlIMDb" target="_blank"> {{curso.nota}}</a> </mat-list-item>
+  <mat-list-item> Nota: <a [href]="curso.urlcurso" target="_blank"> {{curso.nota}}</a> </mat-list-item>
   <img mat-card-image [src]="curso.urlFoto || semFoto" >
 </mat-list>
 <mat-card>

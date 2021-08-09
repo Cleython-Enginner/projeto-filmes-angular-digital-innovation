@@ -2,9 +2,9 @@ export interface Curso {
   id?: number;
   titulo: string;
   urlFoto?: string;
-  dtLancamento: Date;
+  dtConclusao: Date;
   descricao?: string;
   nota: number;
-  urlIMDb?: string;
-  genero: string;
+  urlcurso?: string;
+  area: string;
 }
