@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CursosModule } from './cursos/cursos.module';
 import { CadastroCursosComponent } from './cursos/cadastro-cursos/cadastro-cursos.component';
+import { VisualizarCursosComponent } from './cursos/visualizar-cursos/visualizar-cursos.component';
 import { ListagemCursosComponent } from './cursos/listagem-cursos/listagem-cursos.component';
-import { VisualizarCursosComponent } from './cursos/visualizar-cursos/visualizar-fcursos.component';
 
 const routes: Routes = [
 
@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListagemCursosomponent
+        component: ListagemCursosComponent
       },
       {
         path: 'cadastro',

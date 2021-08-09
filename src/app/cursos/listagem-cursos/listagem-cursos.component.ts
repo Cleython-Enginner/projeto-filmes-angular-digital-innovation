@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { CursosService } from 'src/app/core/cursos.service';
-import { Curso } from 'src/app/shared/models/curso';
 import { ConfigPrams } from 'src/app/shared/models/config-prams';
+import { Cursos } from 'src/app/shared/models/curso';
+
+
 
 @Component({
   selector: 'dio-listagem-cursos',
@@ -18,7 +20,7 @@ export class ListagemCursosComponent implements OnInit {
     pagina: 0,
     limite: 4
   };
-  cursos: Curso[] = [];
+  cursos: Cursos[] = [];
   filtrosListagem: FormGroup;
   generos: Array<string>;
 
@@ -60,7 +62,7 @@ export class ListagemCursosComponent implements OnInit {
   private listarCursos(): void {
     this.config.pagina++;
     this.cursosService.listar(this.config)
-      .subscribe((cursos: Curso[]) => this.cursos.push(...cursos));
+      .subscribe((cursos: Cursos[]) => this.cursos.push(...cursos));
   }
 
   private resetarConsulta(): void {

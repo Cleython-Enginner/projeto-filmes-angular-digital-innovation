@@ -1,13 +1,23 @@
-# Curso Intermediário de Angular - Digital Innovation One
 
-Esse curso foi feito para a plataforma [Digital Innovation One](https://digitalinnovation.one/)
+# Projeto HardSkills Cursos
 
-O curso consiste em um sistema de cursos, com a possibilidade de cadastros, edições, listagem e visualização dos cursos.
+## Esse projeto é baseado no Curso Intermediário de Angular - Realizado no Bootcamp Avanade Angular Developer da Digital Innovation One
+
+Pode realizar o curso na plataforma [Digital Innovation One](https://digitalinnovation.one/)
+
+O curso consiste em um sistema de filmes, com a possibilidade de cadastros, edições, listagem e visualização dos filmes.
+
+E o projeto consiste em um sistema com um catálogo de cursos realizados pelo usuario, contendo informações do curso, onde realizou, e seus certificados.
+
+![ScreenShot](https://github.com/Cleython-Enginner/projeto-skillscursos/blob/main/src/assets/images/background.png)
 
 ## Instalação
 
-1. clone o repositório `git clone git@github.com:RenanRB/curso-angular.git`
+1. clone o repositório `https://github.com/Cleython-Enginner/projeto-skillscursos`
+
 2. Entre no projeto e instale as dependencias `npm install`
+
+Projeto original: `git clone git@github.com:RenanRB/curso-angular.git`
 
 ## Ambiente Local
 

@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidarCamposService } from 'src/app/shared/components/campos/validar-campos.service';
-import { Curso } from 'src/app/shared/models/curso';
 import { CursosService } from 'src/app/core/cursos.service';
 import { AlertaComponent } from 'src/app/shared/components/alerta/alerta.component';
 import { Alerta } from 'src/app/shared/models/alerta';
+import { Curso } from 'src/app/shared/models/curso';
 
 @Component({
   selector: 'dio-cadastro-cursos',
@@ -39,7 +39,7 @@ export class CadastroCursosComponent implements OnInit {
       this.criarFormulario(this.criarCursoEmBranco());
     }
 
-    this.generos = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção cientifica', 'Comédia', 'Aventura', 'Drama'];
+    this.generos = ['Front-end', 'Back-end', 'Mobile', 'Frameworks', 'Ciências de Dados', 'Engenharia de Software', 'Aquitetura de Software', 'Cybersecurity'];
 
   }
 
