@@ -5,6 +5,8 @@
   <mat-list-item class="quebrar-linha"> Descrição: {{curso.descricao}} </mat-list-item>
   <mat-list-item> Nota: <a [href]="curso.urlcurso" target="_blank"> {{curso.nota}}</a> </mat-list-item>
   <img mat-card-image [src]="curso.urlFoto || semFoto" >
+
+  <button color="accent" mat-raised-button (click)="adicionar()">Adicionar Certificado</button>
 </mat-list>
 <mat-card>
   <mat-card-actions>
